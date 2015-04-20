@@ -1,7 +1,9 @@
-react-hot-boilerplate
+rx-react-pinch
 =====================
 
-The minimal dev environment to enable live-editing React components.
+Simple experiment to fiddle with [RxJS](https://github.com/Reactive-Extensions/RxJS), React, ES6 and [Higher-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750).
+
+Look at this [beauty](https://github.com/hugobessaa/rx-react-pinch/blob/master/scripts/Pinch.js#L29#L45)! 
 
 ### Usage
 
@@ -10,29 +12,3 @@ npm install
 npm start
 open http://localhost:3000
 ```
-
-Now edit `scripts/App.js`.  
-Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
-
-### Using `0.0.0.0` as Host
-
-You may want to change the host in `server.js` and `webpack.config.js` from `localhost` to `0.0.0.0` to allow access from same WiFi network. This is not enabled by default because it is reported to cause problems on Windows. This may also be useful if you're using a VM.
-
-### Missing Features
-
-This boilerplate is purposefully simple to show the minimal configuration for React Hot Loader. For a real project, you'll want to add a separate config for production with hot reloading disabled and minification enabled. You'll also want to add a router, styles and maybe combine dev server with an existing server. This is out of scope of this boilerplate, but you may want to look into [other starter kits](https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#starter-kits).
-
-### Dependencies
-
-* React
-* Webpack
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-* [babel-loader](https://github.com/babel/babel-loader)
-* [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-
-### Resources
-
-* [Demo video](http://vimeo.com/100010922)
-* [react-hot-loader on Github](https://github.com/gaearon/react-hot-loader)
-* [Integrating JSX live reload into your workflow](http://gaearon.github.io/react-hot-loader/getstarted/)
-* Ping dan_abramov on Twitter or #reactjs IRC
