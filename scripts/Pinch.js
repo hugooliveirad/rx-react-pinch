@@ -1,10 +1,10 @@
 import React from 'react';
 import Rx from 'rx';
 
-var dom = {};
-['touchstart', 'touchmove', 'touchend'].forEach(ev => {
-  dom[ev] = (element, selector) => Rx.Observable.fromEvent(element, ev, selector)
-});
+let dom = ['touchstart', 'touchmove', 'touchend'].reduce((dom, event) => {
+  dom[event] = (element, selector) => Rx.Observable.fromEvent(element, event, selector);
+  return dom;
+}, {});
 
 function eventPreventDefault(event) {
   event.preventDefault();
