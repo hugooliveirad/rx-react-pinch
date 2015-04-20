@@ -37,7 +37,6 @@
   "dependencies": {
     "react": "^0.13.0",
     "rx": "^2.5.2",
-    "ramda": "^0.13.0",
     "react-prefixr": "^0.1.0"
   }
 }
