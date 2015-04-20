@@ -1,10 +1,13 @@
 import React from 'react';
 import Rx from 'rx';
-import _ from 'ramda';
+
+var dom = {};
+['touchstart', 'touchmove', 'touchend'].forEach(ev => {
+  dom[ev] = (element, selector) => Rx.Observable.fromEvent(element, ev, selector)
+});
 
 function eventPreventDefault(event) {
   event.preventDefault();
-  return event;
 }
 
 function hasTwoTouchPoints(event) {
@@ -13,7 +16,6 @@ function hasTwoTouchPoints(event) {
 
 function logger(subject) {
   console.log(subject);
-  return subject;
 }
 
 class Pinch extends React.Component {
@@ -27,19 +29,19 @@ class Pinch extends React.Component {
   }
 
   handlePinch() {
-    let touchStart = Rx.Observable.fromEvent(window, 'touchstart');
-    let touchMove = Rx.Observable.fromEvent(window, 'touchmove');
-    let touchEnd = Rx.Observable.fromEvent(window, 'touchend');
+    let touchStart = dom.touchstart(window);
+    let touchMove = dom.touchmove(window);
+    let touchEnd = dom.touchend(window);
 
     let pinch = touchStart
-      .map(eventPreventDefault)
+      .tap(eventPreventDefault)
       .takeWhile(hasTwoTouchPoints)
       .flatMap(() => {
         return touchMove
-          .map(_.prop('scale'))
+          .pluck('scale')
           .takeUntil(touchEnd)
       })
-      .map(logger)
+      .tap(logger)
 
     pinch.subscribe(scale => this.setState({ scale: scale }));
   }
