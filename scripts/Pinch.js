@@ -28,6 +28,12 @@ class Pinch extends React.Component {
     this.handlePinch();
   }
 
+  componentWillUnmount() {
+    if (this.pinchSubscription) {
+      this.pinchSubscription.dispose();
+    }
+  }
+
   handlePinch() {
     let touchStart = dom.touchstart(window);
     let touchMove = dom.touchmove(window);
@@ -43,7 +49,7 @@ class Pinch extends React.Component {
       })
       .tap(logger)
 
-    pinch.subscribe(scale => this.setState({ scale: scale }));
+    this.pinchSubscription = pinch.subscribe(scale => this.setState({ scale: scale }));
   }
 
   render() {
